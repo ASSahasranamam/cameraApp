@@ -10,6 +10,7 @@ import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 export class FormComponentComponent implements OnInit {
   // toggle webcam on/off
   public showWebcam = false;
+  public multipleWebcamsAvailable = false;
   // latest snapshot
 public  webcamImage: any = null;
   // webcam snapshot trigger
