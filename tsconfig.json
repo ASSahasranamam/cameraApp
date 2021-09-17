@@ -9,6 +9,7 @@
     "strictPropertyInitialization": false,
     "noImplicitReturns": true,
     "noImplicitAny": false,
+    "strictNullChecks" : false,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,

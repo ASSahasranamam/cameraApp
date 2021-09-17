@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { FormComponentComponent } from './form-component/form-component.component';
 import { WebcamModule } from 'ngx-webcam';
 
+
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -29,7 +30,7 @@ import { ViewAllComponent } from './view-all/view-all.component';
     AngularFireModule.initializeApp(environment.firebase),
     // provideFirestore(() => getFirestore()),
     //Third Party imports
-    WebcamModule
+    WebcamModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

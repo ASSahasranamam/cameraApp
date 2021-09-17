@@ -1,1 +1,11 @@
-<p>view-all works!</p>
+<div class="container-fluid">
+
+  <table>
+    <tr *ngFor="let e of listView">
+      <td>{{e.name}}</td>
+      <td>
+        <img src= {{e.dataurl}} alt="" >
+      </td>
+    </tr>
+  </table>  
+</div>
