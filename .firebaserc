@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "adi-personal-test": {
+      "hosting": {
+        "cameraApp": [
+          "adi-personal-test"
+        ]
+      }
+    }
+  }
+}
