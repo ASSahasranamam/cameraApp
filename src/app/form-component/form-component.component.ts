@@ -19,6 +19,7 @@ public  webcamImage: any = null;
   handleImage(webcamImage: WebcamImage): void {
    console.info('received webcam image', webcamImage);
    this.webcamImage = webcamImage;
+
   }
 
   public get triggerObservable(): Observable<void> {
