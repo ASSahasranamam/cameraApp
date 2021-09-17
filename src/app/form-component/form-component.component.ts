@@ -9,6 +9,7 @@ import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 })
 export class FormComponentComponent {
   // toggle webcam on/off
+  public showWebcam = false;
   // latest snapshot
 public  webcamImage: any = null;
   // webcam snapshot trigger
@@ -20,6 +21,13 @@ public  webcamImage: any = null;
    console.info('received webcam image', webcamImage);
    this.webcamImage = webcamImage;
 
+  }
+  webCamEnable() {
+    if (this.showWebcam == true){
+      this.showWebcam = false;
+    } else{
+      this.showWebcam = true;
+    }
   }
 
   public get triggerObservable(): Observable<void> {
