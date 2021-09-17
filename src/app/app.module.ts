@@ -3,14 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormComponentComponent } from './form-component/form-component.component';
+import {WebcamModule} from 'ngx-webcam';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormComponentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //Third Party imports
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
