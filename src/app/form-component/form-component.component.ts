@@ -7,7 +7,7 @@ import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
   templateUrl: './form-component.component.html',
   styleUrls: ['./form-component.component.scss']
 })
-export class FormComponentComponent {
+export class FormComponentComponent implements OnInit {
   // toggle webcam on/off
   public showWebcam = false;
   // latest snapshot
@@ -34,11 +34,16 @@ public  webcamImage: any = null;
    return this.trigger.asObservable();
   }
 
-
+  public ngOnInit(): void {
+      WebcamUtil.getAvailableVideoInputs()
+        .then((mediaDevices: MediaDeviceInfo[]) => {
+          this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
+        });
+    }
 
   public handleInitError(error: WebcamInitError): void {
     if (error.mediaStreamError && error.mediaStreamError.name === "NotAllowedError") {
-      console.warn("Camera access was not allowed by user!");
+      alert("Camera access was not allowed by user!");
     }
   }
 
