@@ -1,11 +1,23 @@
-<div class="container-fluid">
+<div class=" container-fluid p-5 d-flex flex-column min-vh-100 max-vw-100 justify-content-center align-items-center">
 
-  <table>
-    <tr *ngFor="let e of listView">
-      <td>{{e.name}}</td>
-      <td>
-        <img src= {{e.dataurl}} alt="" >
-      </td>
-    </tr>
-  </table>  
+  <table class="table" style="max-width: 75vw;">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let e of listView">
+  <td style="max-width:30vw; padding:3px; word-wrap: break-word">
+    <h4>
+    {{e.name}}
+  </h4>
+    </td>
+  <td>
+    <img style= "max-width: 30vw; height: auto; "src= {{e.dataurl}} alt="" >
+  </td>
+</tr>
+</tbody>
+  </table>
 </div>
