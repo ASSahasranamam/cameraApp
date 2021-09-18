@@ -18,6 +18,7 @@ export class FormComponentComponent implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Item>;
   public data2: any = null;
   items: Observable<Item[]>;
+  public showProcessing = false;
 
 
   private storage = getStorage();
@@ -51,6 +52,7 @@ export class FormComponentComponent implements OnInit {
   onSubmit(webcamImage: WebcamImage) {
 
     let item: Item = { name: this.name, dataurl: webcamImage.imageAsDataUrl };
+    this.showProcessing = true;
 
     this.itemsCollection.add(item).then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
@@ -62,6 +64,8 @@ export class FormComponentComponent implements OnInit {
       uploadString(spaceref, this.webcamImage.imageAsDataUrl, 'data_url').then((snapshot) => {
         console.log('Uploaded a data_url string!');
         alert("Your Details have been submitted");
+        this.showProcessing = false;
+
         this.webcamImage = null;
         this.name = ""
 
