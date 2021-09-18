@@ -61,9 +61,13 @@ export class FormComponentComponent implements OnInit {
 
       uploadString(spaceref, this.webcamImage.imageAsDataUrl, 'data_url').then((snapshot) => {
         console.log('Uploaded a data_url string!');
+        alert("Your Details have been submitted");
         this.webcamImage = null;
         this.name = ""
+
         this.showWebcam = false;
+
+
       });
 
     })
