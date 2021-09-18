@@ -43,7 +43,7 @@ export class FormComponentComponent implements OnInit {
   handleImage(webcamImage: WebcamImage): void {
     console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
-    alert(this.webcamImage.imageAsDataUrl);
+    console.log(this.webcamImage.imageAsDataUrl);
     // var filePath = event.target.files[0]
 
   }

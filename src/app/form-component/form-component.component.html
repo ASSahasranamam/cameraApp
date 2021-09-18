@@ -21,16 +21,18 @@
       <input class="form-control" [(ngModel)]="name" placeholder="Enter Name">
     </div>
 
-    <button  (click)="webCamEnable();" class="btn btn-primary">Browse Picture From Camera</button>
+    <button  (click)="webCamEnable();" class="btn btn-primary">Upload Picture From Camera</button>
     <webcam *ngIf="showWebcam" [height]="500" [width]="500" (initError)="handleInitError($event)" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
     <button class="btn btn-primary" *ngIf="showWebcam" (click)="triggerSnapshot();">Take A Snapshot</button>
 
     <div class="snapshot" *ngIf="webcamImage">
       <p>Take your image or get another</p>
       <img [src]="webcamImage.imageAsDataUrl"/>
-      <button class="btn btn-primary" *ngIf="showWebcam" (click)="onSubmit(webcamImage);">submit</button>
     </div>
       <br>
-    <img src="data2" *ngIf="FromFireStoreTest" alt="">
+      <br>
+
+      <button class="btn btn-primary" *ngIf="showWebcam" (click)="onSubmit(webcamImage);">submit</button>
+ 
 
 </div>
