@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ViewAllComponent } from './view-all/view-all.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ViewAllComponent } from './view-all/view-all.component';
     // provideFirestore(() => getFirestore()),
     //Third Party imports
     WebcamModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

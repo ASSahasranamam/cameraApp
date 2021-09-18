@@ -5,6 +5,7 @@ import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs/operators';
 import { getStorage, ref, uploadString } from "firebase/storage";
+import { NgxSpinnerService } from "ngx-spinner";
 
 export interface Item { name: string; dataurl: string }
 @Component({
@@ -23,7 +24,7 @@ export class FormComponentComponent implements OnInit {
 
   private storage = getStorage();
 
-  constructor(private afs: AngularFirestore, private afstorage: AngularFireStorage) {
+  constructor(private afs: AngularFirestore, private afstorage: AngularFireStorage, private spinner: NgxSpinnerService) {
     this.itemsCollection = afs.collection<Item>('bioData');
 
 
@@ -53,7 +54,7 @@ export class FormComponentComponent implements OnInit {
 
     let item: Item = { name: this.name, dataurl: webcamImage.imageAsDataUrl };
     this.showProcessing = true;
-
+    this.spinner.show();
     this.itemsCollection.add(item).then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
       let id = docRef.id;
@@ -64,6 +65,7 @@ export class FormComponentComponent implements OnInit {
       uploadString(spaceref, this.webcamImage.imageAsDataUrl, 'data_url').then((snapshot) => {
         console.log('Uploaded a data_url string!');
         alert("Your Details have been submitted");
+        this.spinner.hide();
         this.showProcessing = false;
 
         this.webcamImage = null;
@@ -74,8 +76,11 @@ export class FormComponentComponent implements OnInit {
 
       });
 
+    }).then(() => {
+      this.spinner.hide();
     })
       .catch(function(error) {
+        alert(error);
         console.error("Error adding document: ", error);
       });
 
@@ -97,6 +102,7 @@ export class FormComponentComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.spinner.hide()
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;

@@ -6,7 +6,7 @@ import { Subject, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { map } from 'rxjs/operators';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-view-all',
@@ -21,7 +21,7 @@ export class ViewAllComponent implements OnInit {
   items: Observable<Item[]>;
   listView = [];
   constructor(private db: AngularFirestore,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute, private spinner: NgxSpinnerService) {
     this.itemsCollection = db.collection('bioData');
 
 
@@ -35,22 +35,24 @@ export class ViewAllComponent implements OnInit {
   //     return snapshot.docs.map(doc => doc.data());
   // }
   ngOnInit() {
+    // this.spinner.show();
     // this.items.forEach(element => {
     //   console.log(element.getDocs())
     // });
-    this.itemsCollection.get()
-      .pipe(
-        map(snapshot => {
-          let items2: Item[] = [];
-          snapshot.docs.map(a => {
-            var data = a.data();
-            var id = a.id;
-            var name = data.name;
-            this.listView.push(data)
-          })
-          // return items2
-        }),
-      )
+    // this.itemsCollection.get()
+    //   .pipe(
+    //     map(snapshot => {
+    //       let items2: Item[] = [];
+    //       snapshot.docs.map(a => {
+    //         var data = a.data();
+    //         var id = a.id;
+    //         var name = data.name;
+    //         this.listView.push(data)
+    //       })
+    //       this.spinner.hide();
+    //       // return items2
+    //     }),
+    //   )
 
     this.itemsCollection.get().subscribe(data => {
       // console.log(data.docs)
@@ -59,8 +61,10 @@ export class ViewAllComponent implements OnInit {
         this.listView.push(element.data())
 
       });
-
+      // this.spinner.h();
     })
+
+
 
     // this.db.collection("cities").get().then(function(querySnapshot) {
     //   querySnapshot.forEach(function(doc) {

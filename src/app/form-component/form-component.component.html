@@ -26,7 +26,7 @@
     <button class="btn btn-primary" *ngIf="showWebcam" (click)="triggerSnapshot();">Take A Snapshot</button>
 
     <div class="snapshot" *ngIf="webcamImage">
-      <p>Take your image or get another</p>
+      <p class="text-center">Take your image or get another</p>
       <img [src]="webcamImage.imageAsDataUrl"/>
     </div>
       <br>
@@ -34,5 +34,10 @@
 
       <button *ngIf="showProcessing == false && showWebcam" class="btn btn-primary"  (click)="onSubmit(webcamImage);"> Submit</button>
       <h3 *ngIf="showProcessing"> Processing Please wait </h3>
-
+      <br>
+      <br>
 </div>
+
+<!-- <ngx-spinner>
+<p style="font-size: 20px; color: white">Processing... please wait.</p>
+</ngx-spinner> -->
